@@ -14,6 +14,16 @@
 		1043AA612BE8DB780069BB8B /* FurnitureAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA602BE8DB780069BB8B /* FurnitureAppTests.swift */; };
 		1043AA6B2BE8DB780069BB8B /* FurnitureAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA6A2BE8DB780069BB8B /* FurnitureAppUITests.swift */; };
 		1043AA6D2BE8DB780069BB8B /* FurnitureAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA6C2BE8DB780069BB8B /* FurnitureAppUITestsLaunchTests.swift */; };
+		1043AA7A2BE911760069BB8B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA792BE911760069BB8B /* SignUpView.swift */; };
+		1043AA7C2BE923A00069BB8B /* Extension+UiAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA7B2BE923A00069BB8B /* Extension+UiAplication.swift */; };
+		1043AA7F2BE924210069BB8B /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA7E2BE924200069BB8B /* VerificationView.swift */; };
+		1043AA812BE95A500069BB8B /* VerificationNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA802BE95A500069BB8B /* VerificationNumberView.swift */; };
+		1043AA832BE97E0B0069BB8B /* SignUpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA822BE97E0B0069BB8B /* SignUpButtonView.swift */; };
+		1043AA852BEA2C590069BB8B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA842BEA2C590069BB8B /* DetailView.swift */; };
+		1050EFE52BEAD1CE006BEB23 /* Extension+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1050EFE42BEAD1CE006BEB23 /* Extension+View.swift */; };
+		1050EFE72BEAD1F3006BEB23 /* RoudedRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1050EFE62BEAD1F3006BEB23 /* RoudedRectangleView.swift */; };
+		1050EFE92BEAD21F006BEB23 /* ViewModifire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1050EFE82BEAD21F006BEB23 /* ViewModifire.swift */; };
+		1050EFEE2BEB5B58006BEB23 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1050EFED2BEB5B58006BEB23 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,16 @@
 		1043AA662BE8DB780069BB8B /* FurnitureAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FurnitureAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1043AA6A2BE8DB780069BB8B /* FurnitureAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureAppUITests.swift; sourceTree = "<group>"; };
 		1043AA6C2BE8DB780069BB8B /* FurnitureAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1043AA792BE911760069BB8B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		1043AA7B2BE923A00069BB8B /* Extension+UiAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UiAplication.swift"; sourceTree = "<group>"; };
+		1043AA7E2BE924200069BB8B /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		1043AA802BE95A500069BB8B /* VerificationNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationNumberView.swift; sourceTree = "<group>"; };
+		1043AA822BE97E0B0069BB8B /* SignUpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpButtonView.swift; sourceTree = "<group>"; };
+		1043AA842BEA2C590069BB8B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		1050EFE42BEAD1CE006BEB23 /* Extension+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+View.swift"; sourceTree = "<group>"; };
+		1050EFE62BEAD1F3006BEB23 /* RoudedRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoudedRectangleView.swift; sourceTree = "<group>"; };
+		1050EFE82BEAD21F006BEB23 /* ViewModifire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifire.swift; sourceTree = "<group>"; };
+		1050EFED2BEB5B58006BEB23 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +116,13 @@
 			children = (
 				1043AA4F2BE8DB760069BB8B /* FurnitureAppApp.swift */,
 				1043AA512BE8DB760069BB8B /* ContentView.swift */,
+				1050EFEC2BEB5B3C006BEB23 /* SigUpModule */,
+				1043AA7E2BE924200069BB8B /* VerificationView.swift */,
+				1043AA802BE95A500069BB8B /* VerificationNumberView.swift */,
+				1043AA842BEA2C590069BB8B /* DetailView.swift */,
+				1050EFEB2BEB56F8006BEB23 /* HelpView */,
+				1050EFEA2BEB56E3006BEB23 /* Modifire */,
+				1043AA7D2BE923FD0069BB8B /* Extension */,
 				1043AA532BE8DB780069BB8B /* Assets.xcassets */,
 				1043AA552BE8DB780069BB8B /* Preview Content */,
 			);
@@ -125,6 +152,41 @@
 				1043AA6C2BE8DB780069BB8B /* FurnitureAppUITestsLaunchTests.swift */,
 			);
 			path = FurnitureAppUITests;
+			sourceTree = "<group>";
+		};
+		1043AA7D2BE923FD0069BB8B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1043AA7B2BE923A00069BB8B /* Extension+UiAplication.swift */,
+				1050EFE42BEAD1CE006BEB23 /* Extension+View.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1050EFEA2BEB56E3006BEB23 /* Modifire */ = {
+			isa = PBXGroup;
+			children = (
+				1050EFE82BEAD21F006BEB23 /* ViewModifire.swift */,
+			);
+			path = Modifire;
+			sourceTree = "<group>";
+		};
+		1050EFEB2BEB56F8006BEB23 /* HelpView */ = {
+			isa = PBXGroup;
+			children = (
+				1050EFE62BEAD1F3006BEB23 /* RoudedRectangleView.swift */,
+				1043AA822BE97E0B0069BB8B /* SignUpButtonView.swift */,
+			);
+			path = HelpView;
+			sourceTree = "<group>";
+		};
+		1050EFEC2BEB5B3C006BEB23 /* SigUpModule */ = {
+			isa = PBXGroup;
+			children = (
+				1043AA792BE911760069BB8B /* SignUpView.swift */,
+				1050EFED2BEB5B58006BEB23 /* SignUpViewModel.swift */,
+			);
+			path = SigUpModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +319,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1043AA7F2BE924210069BB8B /* VerificationView.swift in Sources */,
+				1050EFE52BEAD1CE006BEB23 /* Extension+View.swift in Sources */,
+				1043AA852BEA2C590069BB8B /* DetailView.swift in Sources */,
 				1043AA522BE8DB760069BB8B /* ContentView.swift in Sources */,
+				1043AA7C2BE923A00069BB8B /* Extension+UiAplication.swift in Sources */,
+				1050EFE92BEAD21F006BEB23 /* ViewModifire.swift in Sources */,
+				1043AA7A2BE911760069BB8B /* SignUpView.swift in Sources */,
+				1043AA812BE95A500069BB8B /* VerificationNumberView.swift in Sources */,
+				1043AA832BE97E0B0069BB8B /* SignUpButtonView.swift in Sources */,
 				1043AA502BE8DB760069BB8B /* FurnitureAppApp.swift in Sources */,
+				1050EFEE2BEB5B58006BEB23 /* SignUpViewModel.swift in Sources */,
+				1050EFE72BEAD1F3006BEB23 /* RoudedRectangleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
