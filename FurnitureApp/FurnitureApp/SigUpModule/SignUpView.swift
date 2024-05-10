@@ -140,9 +140,10 @@ struct SignUpView: View {
             SignUpButtonView(title: Constants.getButtonnTitle, action: {
                 isShowDetail.toggle()
             })
-        }.fullScreenCover(isPresented: $isShowDetail, content: {
-            DetailView()
-        })
+        }
+//        .fullScreenCover(isPresented: $isShowDetail, content: {
+//            DetailView()
+//        })
     }
     
     @State private var isShowAlert = false
