@@ -15,6 +15,7 @@ struct DetailView: View {
         static let buyNowButtonTitle = "Buy now"
     }
     
+    let goodsItem: GoodsModel
     @Environment(\.presentationMode) var presenter
     
     var body: some View {
@@ -30,7 +31,7 @@ struct DetailView: View {
     private var detailView: some View {
         VStack{
             HStack {
-                Text(Constants.title)
+                Text(goodsItem.title)
                     .font(Font.system(size: 20).bold())
                     .foregroundColor(.black.opacity(0.6))
                 Spacer()
@@ -41,13 +42,13 @@ struct DetailView: View {
                 }
                 .foregroundColor(.black)
             }.padding()
-            Image("sofa")
+            Image(goodsItem.image)
             HStack {
                 Spacer()
                 ZStack {
                     RoundedRectangle(cornerRadius: 10).fill(.brown.opacity(0.5))
                         .frame(width: 191, height: 44)
-                    Text("Price: 999$")
+                    Text("Price: \(goodsItem.newPrice)$")
                         .font(Font.system(size: 20).bold())
                         .foregroundColor(.black.opacity(0.6))
                 }
@@ -123,8 +124,4 @@ struct DetailView: View {
             
         }
     }
-}
-
-#Preview {
-    DetailView()
 }

@@ -77,7 +77,7 @@ struct ContentView: View {
             SignUpView()
         })
         .fullScreenCover(isPresented: $isShowDetailView, content: {
-            DetailView()
+            TabUIView()
         })
     }
 }
