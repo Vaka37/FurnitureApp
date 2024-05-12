@@ -47,6 +47,8 @@ struct VerificationView: View {
             if isShowProgressView {
                 ProgressView()
             }
+            alertCustomView
+                .offset(y: !isShowAlert ? -700 : 0)
         }
     }
     private var backgroundNavigation: some View {
@@ -74,26 +76,26 @@ struct VerificationView: View {
     
     private var textFieldView: some View {
         HStack(spacing:15, content: {
-                TextField("", text: $textFieldOne)
-                    .modifier(OtpModifer())
-                    .onChange(of: textFieldOne, { oldValue, newValue in
-                        if (newValue.count == 1) {
-                            pinFocusState = .pinTwo
+            TextField("", text: $textFieldOne)
+                .modifier(OtpModifer())
+                .onChange(of: textFieldOne, { oldValue, newValue in
+                    if (newValue.count == 1) {
+                        pinFocusState = .pinTwo
+                    }
+                })
+                .focused($pinFocusState, equals: .pinOne)
+            TextField("", text:  $textFieldTwo)
+                .modifier(OtpModifer())
+                .onChange(of: textFieldTwo, { oldValue, newValue in
+                    if (newValue.count == 1) {
+                        pinFocusState = .pinThree
+                    }else {
+                        if (newValue.count == 0) {
+                            pinFocusState = .pinOne
                         }
-                    })
-                    .focused($pinFocusState, equals: .pinOne)
-                TextField("", text:  $textFieldTwo)
-                    .modifier(OtpModifer())
-                    .onChange(of: textFieldTwo, { oldValue, newValue in
-                        if (newValue.count == 1) {
-                            pinFocusState = .pinThree
-                        }else {
-                            if (newValue.count == 0) {
-                                pinFocusState = .pinOne
-                            }
-                        }
-                    })
-                    .focused($pinFocusState, equals: .pinTwo)
+                    }
+                })
+                .focused($pinFocusState, equals: .pinTwo)
             TextField("", text:$textFieldThree)
                 .modifier(OtpModifer())
                 .onChange(of: textFieldThree, { oldValue, newValue in
@@ -106,16 +108,16 @@ struct VerificationView: View {
                     }
                 })
                 .focused($pinFocusState, equals: .pinThree)
-                TextField("", text: $textFieldFour)
-                    .modifier(OtpModifer())
-                    .onChange(of: textFieldFour, { oldValue, newValue in
-                        if (newValue.count == 0) {
-                            pinFocusState = .pinThree
-                        } else if newValue.count == 1 {
-                            pinFocusState = .inOut
-                        }
-                    })
-                    .focused($pinFocusState, equals: .pinFour)
+            TextField("", text: $textFieldFour)
+                .modifier(OtpModifer())
+                .onChange(of: textFieldFour, { oldValue, newValue in
+                    if (newValue.count == 0) {
+                        pinFocusState = .pinThree
+                    } else if newValue.count == 1 {
+                        pinFocusState = .inOut
+                    }
+                })
+                .focused($pinFocusState, equals: .pinFour)
         })
         .padding(.vertical)
     }
@@ -128,7 +130,7 @@ struct VerificationView: View {
                 .font(.title3.bold())
             Text(Constants.messageTitle)
                 .foregroundColor(.black.opacity(0.6))
-                Spacer()
+            Spacer()
                 .frame(height: 30)
             SignUpButtonView(title: "Continue") {
                 isShowProgressView.toggle()
@@ -143,7 +145,9 @@ struct VerificationView: View {
                 .foregroundColor(.black.opacity(0.6))
                 .padding()
             Button {
-                isShowAlert = true
+                withAnimation(.linear) {
+                    isShowAlert = true
+                }
             } label: {
                 Text("Send sms again")
                     .foregroundColor(.black.opacity(0.6))
@@ -153,23 +157,45 @@ struct VerificationView: View {
                 .frame(width: 150)
                 .background(Color.black)
         }
-        .alert("Fill in from message", isPresented: $isShowAlert) {
-            Button("Cancel"){}
-            Button(role: .cancel) {
+    }
+    
+    private var alertCustomView: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 15)
+                .fill(Color.white.opacity(0.9))
+                .stroke(LinearGradient(colors: [.gradientBottom, .blue], startPoint: .top, endPoint: .leading), lineWidth: 1)
+                .frame(width: 270, height: 150)
+            VStack{
                 let title = String(Int.random(in: 1000...9999))
-               let array = title.compactMap({$0})
-                textFieldOne = String(array.first ?? Character(""))
-                textFieldTwo = String(array[1])
-                textFieldThree = String(array[2])
-                textFieldFour = String(array.last ?? Character(""))
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-                    pinFocusState = .inOut
-                })
-            } label: {
-                Text("ok")
+                let array = title.compactMap({$0})
+                Text("Ваш код авторизации")
+                Spacer()
+                    .frame(height: 20)
+                Text(title)
+                Spacer()
+                    .frame(height: 20)
+                HStack {
+                    Button("ok"){
+                        withAnimation(.linear) {
+                            isShowAlert = false
+                        }
+                        textFieldOne = String(array.first ?? Character(""))
+                        textFieldTwo = String(array[1])
+                        textFieldThree = String(array[2])
+                        textFieldFour = String(array.last ?? Character(""))
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                            pinFocusState = .inOut
+                        })
+                    }
+                    Spacer()
+                        .frame(width: 70)
+                    Button("Cancel") {
+                        withAnimation(.linear) {
+                            isShowAlert = false
+                        }
+                    }
+                }
             }
-        } message: {
-            Text(String(Int.random(in: 1000...9999)))
         }
     }
 }
