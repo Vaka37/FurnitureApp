@@ -40,6 +40,9 @@ struct SignUpView: View {
                         UIApplication.shared.endEditing()
                     }
                 }
+                errorView
+                    .offset(x: !sigUpViewModel.isShowAlert ? -400 : 0)
+                    .transition(.slide)
             }
             .onTapGesture {
                 UIApplication.shared.endEditing()
@@ -76,6 +79,7 @@ struct SignUpView: View {
     @State private var isVisiblePassword = false
     @State private var isVerificationPassword = true
     @FocusState var focused: Int?
+    
     private var textfildsView: some View {
         VStack(alignment: .leading) {
             TextField(Constants.placeholderNumberPhone, text: $numberPhoneTextField, onCommit: {
@@ -98,13 +102,14 @@ struct SignUpView: View {
                 .frame(height: 30)
             Text(Constants.passwordLabel)
                 .padding(.leading)
+                .modifier(ShakeEffect(shakes: sigUpViewModel.isShowAlert ? 2 : 0))
             HStack {
                 if isVisiblePassword{
-                    SecureField(Constants.placeholderPassword, text: $passwordTextField)
+                    SecureField(Constants.placeholderPassword, text: $sigUpViewModel.passwordTextField)
                         .id(2)
                         .focused($focused, equals: 2)
                 } else {
-                    TextField(Constants.placeholderPassword, text: $passwordTextField)
+                    TextField(Constants.placeholderPassword, text: $sigUpViewModel.passwordTextField)
                         .id(2)
                         .focused($focused, equals: 2)
                 }
@@ -120,13 +125,13 @@ struct SignUpView: View {
             .foregroundColor(isVerificationPassword ? .black : .red)
             .padding(10)
             .padding(.leading)
+            .modifier(ShakeEffect(shakes: sigUpViewModel.isShowAlert ? 2 : 0))
             Divider()
-            
         }.onAppear() {
             focused = 1
         }
-        .onChange(of: passwordTextField) {
-            if passwordTextField.count < 6 {
+        .onChange(of: sigUpViewModel.passwordTextField) {
+            if sigUpViewModel.passwordTextField.count < 6 {
                 isVerificationPassword = false
             } else {
                 isVerificationPassword = true
@@ -138,12 +143,11 @@ struct SignUpView: View {
     private var signUpButton: some View {
         VStack {
             SignUpButtonView(title: Constants.getButtonnTitle, action: {
-                isShowDetail.toggle()
+                withAnimation {
+                    sigUpViewModel.verificationPassword()
+                }
             })
         }
-//        .fullScreenCover(isPresented: $isShowDetail, content: {
-//            DetailView()
-//        })
     }
     
     @State private var isShowAlert = false
@@ -178,9 +182,41 @@ struct SignUpView: View {
             Text("88002000500")
         }
     }
+    
+    private var errorView: some View {
+          RoundedRectangle(cornerRadius: 20)
+            .fill(.gray.opacity(0.6))
+              .frame(width: 300, height: 150)
+              .overlay {
+                  VStack {
+                      Text("Ошибка")
+                      Spacer()
+                          .frame(height: 70)
+                      Text("Попробуй позже")
+                  }
+                  .font(.custom("Verdana-Bold", size: 16))
+                  .foregroundColor(.black)
+              }
+      }
 }
 
 #Preview {
     SignUpView()
 }
 
+
+struct ShakeEffect: GeometryEffect {
+        func effectValue(size: CGSize) -> ProjectionTransform {
+            return ProjectionTransform(CGAffineTransform(translationX: -30 * sin(position * 2 * .pi), y: 0))
+        }
+
+        init(shakes: Int) {
+            position = CGFloat(shakes)
+        }
+
+        var position: CGFloat
+        var animatableData: CGFloat {
+            get { position }
+            set { position = newValue }
+        }
+    }

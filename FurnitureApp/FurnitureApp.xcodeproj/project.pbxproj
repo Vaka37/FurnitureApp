@@ -18,6 +18,9 @@
 		1005B4C42BECC4C3000697B3 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005B4C32BECC4C2000697B3 /* FilterView.swift */; };
 		1005B4C62BECF987000697B3 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005B4C52BECF987000697B3 /* FilterViewModel.swift */; };
 		1005B4C82BED4BF0000697B3 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005B4C72BED4BF0000697B3 /* SliderView.swift */; };
+		1005B4D92BEE9BC0000697B3 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005B4D82BEE9BC0000697B3 /* PaymentView.swift */; };
+		1005B4DC2BEE9F57000697B3 /* PaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005B4DB2BEE9F57000697B3 /* PaymentViewModel.swift */; };
+		1005B4ED2BF01927000697B3 /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1005B4EC2BF01927000697B3 /* Extension+Date.swift */; };
 		1043AA502BE8DB760069BB8B /* FurnitureAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA4F2BE8DB760069BB8B /* FurnitureAppApp.swift */; };
 		1043AA522BE8DB760069BB8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1043AA512BE8DB760069BB8B /* ContentView.swift */; };
 		1043AA542BE8DB780069BB8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1043AA532BE8DB780069BB8B /* Assets.xcassets */; };
@@ -66,6 +69,9 @@
 		1005B4C32BECC4C2000697B3 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		1005B4C52BECF987000697B3 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		1005B4C72BED4BF0000697B3 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
+		1005B4D82BEE9BC0000697B3 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
+		1005B4DB2BEE9F57000697B3 /* PaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewModel.swift; sourceTree = "<group>"; };
+		1005B4EC2BF01927000697B3 /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
 		1043AA4C2BE8DB760069BB8B /* FurnitureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FurnitureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1043AA4F2BE8DB760069BB8B /* FurnitureAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FurnitureAppApp.swift; sourceTree = "<group>"; };
 		1043AA512BE8DB760069BB8B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +140,15 @@
 			path = GoodsModule;
 			sourceTree = "<group>";
 		};
+		1005B4DA2BEE9BC3000697B3 /* PaymentModeule */ = {
+			isa = PBXGroup;
+			children = (
+				1005B4D82BEE9BC0000697B3 /* PaymentView.swift */,
+				1005B4DB2BEE9F57000697B3 /* PaymentViewModel.swift */,
+			);
+			path = PaymentModeule;
+			sourceTree = "<group>";
+		};
 		1043AA432BE8DB760069BB8B = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +174,7 @@
 			children = (
 				1043AA4F2BE8DB760069BB8B /* FurnitureAppApp.swift */,
 				1043AA512BE8DB760069BB8B /* ContentView.swift */,
+				1005B4DA2BEE9BC3000697B3 /* PaymentModeule */,
 				1005B4B82BEBB449000697B3 /* TabView.swift */,
 				1005B4C32BECC4C2000697B3 /* FilterView.swift */,
 				1005B4C72BED4BF0000697B3 /* SliderView.swift */,
@@ -208,6 +224,7 @@
 			children = (
 				1043AA7B2BE923A00069BB8B /* Extension+UiAplication.swift */,
 				1050EFE42BEAD1CE006BEB23 /* Extension+View.swift */,
+				1005B4EC2BF01927000697B3 /* Extension+Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -381,8 +398,10 @@
 				1005B4BB2BEC1643000697B3 /* GoodsView.swift in Sources */,
 				1005B4C22BEC2123000697B3 /* GoodsCellView.swift in Sources */,
 				1050EFE92BEAD21F006BEB23 /* ViewModifire.swift in Sources */,
+				1005B4D92BEE9BC0000697B3 /* PaymentView.swift in Sources */,
 				1043AA7A2BE911760069BB8B /* SignUpView.swift in Sources */,
 				1043AA812BE95A500069BB8B /* VerificationNumberView.swift in Sources */,
+				1005B4DC2BEE9F57000697B3 /* PaymentViewModel.swift in Sources */,
 				1005B4B92BEBB449000697B3 /* TabView.swift in Sources */,
 				1043AA832BE97E0B0069BB8B /* SignUpButtonView.swift in Sources */,
 				1043AA502BE8DB760069BB8B /* FurnitureAppApp.swift in Sources */,
@@ -391,6 +410,7 @@
 				1050EFE72BEAD1F3006BEB23 /* RoudedRectangleView.swift in Sources */,
 				1005B4C82BED4BF0000697B3 /* SliderView.swift in Sources */,
 				1005B4BE2BEC1FA0000697B3 /* GoodsViewModel.swift in Sources */,
+				1005B4ED2BF01927000697B3 /* Extension+Date.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

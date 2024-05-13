@@ -28,6 +28,8 @@ struct DetailView: View {
         }
     }
     
+    @State private var scale: CGFloat = 1.0
+
     private var detailView: some View {
         VStack{
             HStack {
@@ -43,6 +45,14 @@ struct DetailView: View {
                 .foregroundColor(.black)
             }.padding()
             Image(goodsItem.image)
+                .scaleEffect(scale)
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged { value in
+                            scale = value.magnitude
+                        }
+                )
+
             HStack {
                 Spacer()
                 ZStack {
