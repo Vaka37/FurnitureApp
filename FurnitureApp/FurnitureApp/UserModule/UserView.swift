@@ -15,11 +15,13 @@ struct UserView: View {
         static let locationIcon = "location"
     }
     var body: some View {
-        ZStack {
-            backgroundNavigation
-            VStack {
-                userInfo
-                listSettings
+        NavigationView{
+            ZStack {
+                backgroundNavigation
+                VStack {
+                    userInfo
+                    listSettings
+                }
             }
         }
     }
@@ -53,8 +55,12 @@ struct UserView: View {
     
     private var listSettings: some View {
         List(userViewModel.userSettings, id: \.self) { settings in
+            NavigationLink {
+                PaymentView()
+            } label: {
             SetinsUserCellView(settingsModel: settings)
-                .listRowSeparator(.hidden)
+        }
+            .listRowSeparator(.hidden)
         }
         .frame(height: 300)
         .listStyle(.plain)

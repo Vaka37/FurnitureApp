@@ -11,16 +11,16 @@ struct PaymentView: View {
     var body: some View {
         ZStack {
             backgroundNavigation
-             scrollView
-            .navigationBarBackButtonHidden()
-            .navigationTitle("Payment")
-            .navigationBarItems(leading: Button(action: {
-                presenter.wrappedValue.dismiss()
-            }, label: {
-                Image(systemName: "chevron.left")
-                    .foregroundColor(.white)
-            }))
-
+            scrollView
+                .navigationBarBackButtonHidden()
+                .navigationTitle("Payment")
+                .navigationBarItems(leading: Button(action: {
+                    presenter.wrappedValue.dismiss()
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                }))
+            
         }
     }
     
@@ -61,29 +61,29 @@ struct PaymentView: View {
         ZStack {
             
             if front {
-            RoundedRectangle(cornerRadius: 25.0)
-                .fill(
-            LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .leading, endPoint: .trailing))
-                .frame(width: 310, height: 180)
-                .shadow(color: .black.opacity(0.6), radius: 6, x: 2)
+                RoundedRectangle(cornerRadius: 25.0)
+                    .fill(
+                        LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .leading, endPoint: .trailing))
+                    .frame(width: 310, height: 180)
+                    .shadow(color: .black.opacity(0.6), radius: 6, x: 2)
                 frontView
-                .padding(.leading, 60)
+                    .padding(.leading, 60)
             } else {
                 RoundedRectangle(cornerRadius: 25.0)
                     .fill(
-                LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .trailing, endPoint: .leading))
+                        LinearGradient(colors: [.gradientTop, .gradientBottom], startPoint: .trailing, endPoint: .leading))
                     .frame(width: 310, height: 180)
                     .shadow(color: .black.opacity(0.6), radius: 6, x: 2)
                 backView
                     .padding(.leading, 60)
                     .rotation3DEffect(
                         .degrees(rotationDegres),
-                                              axis: (x: 0.0, y: 2.0, z: 0.0)
+                        axis: (x: 0.0, y: 2.0, z: 0.0)
                     )
             }
         }.rotation3DEffect(
             .degrees(rotationDegres),
-                                  axis: (x: 0.0, y: 1.0, z: 0.0)
+            axis: (x: 0.0, y: 1.0, z: 0.0)
         )
         .onTapGesture {
             withAnimation(.smooth(duration: 1)) {
@@ -130,16 +130,16 @@ struct PaymentView: View {
                     .font(.title2.bold())
                     .foregroundColor(.white)
                 Text("CVC/CVV")
-                    .font(.title3.bold())
-                    .foregroundColor(.gray.opacity(0.6))
+                    .font(.title3)
+                    .foregroundColor(.white)
             }
             HStack{
                 Text(viewModel.day.formater())
                     .font(.title2.bold())
                     .foregroundColor(.white)
                 Text("Valid")
-                    .font(.title3.bold())
-                    .foregroundColor(.gray.opacity(0.6))
+                    .font(.title3)
+                    .foregroundColor(.white)
             }
         }
     }
@@ -148,8 +148,8 @@ struct PaymentView: View {
     @State private var isShowPresented = false
     private var cardAdded: some View {
         VStack {
-            makeTextField(text: $viewModel.cardName, placeholder: "Cardholder name", title: "Add new card", onCommit: nil)
-            makeTextField(text: $viewModel.cardNumber, placeholder: "0000 0000 0000 0000", title: "Card number", onCommit: nil)
+            makeTextField(text: $viewModel.cardName, placeholder: "Cardholder name", title: "Add new card", onCommit: nil, isSecurity: false)
+            makeTextField(text: $viewModel.cardNumber, placeholder: "0000 0000 0000 0000", title: "Card number", onCommit: nil, isSecurity: false)
                 .keyboardType(.numberPad)
             HStack {
                 VStack(alignment: .leading){
@@ -192,30 +192,38 @@ struct PaymentView: View {
             if isShowDatePicker{
                 HStack {
                     DatePicker("", selection: $viewModel.day,in: Date()... , displayedComponents: .date)
-                 Spacer()
+                    Spacer()
                         .frame(width: 270)
                 }
-                    .padding(.leading)
+                .padding(.leading)
             }
             makeTextField(text: $viewModel.cvc, placeholder: "000", title: "CVC", onCommit: {
                 if viewModel.cvc.count < 3 {
                     isShowPresented.toggle()
                     viewModel.cvc = ""
                 }
-            })
-                .keyboardType(.numberPad)
+            }, isSecurity: true)
+            .keyboardType(.numberPad)
         }
         .alert("CVC не может быть меньше 3 символов", isPresented: $isShowPresented) {
         }
     }
     
-    private func makeTextField(text: Binding<String>, placeholder: String, title: String, onCommit : ((() -> Void)?)) -> some View {
+    private func makeTextField(text: Binding<String>, placeholder: String, title: String, onCommit : ((() -> Void)?), isSecurity: Bool) -> some View {
         VStack(alignment: .leading) {
-            Text(title)
-                .font(.title2.bold())
-                .foregroundColor(.black.opacity(0.7))
-            TextField(placeholder, text: text,onCommit: onCommit ?? {})
-            Divider()
+            if !isSecurity {
+                Text(title)
+                    .font(.title2.bold())
+                    .foregroundColor(.black.opacity(0.7))
+                TextField(placeholder, text: text,onCommit: onCommit ?? {})
+                Divider()
+            } else {
+                Text(title)
+                    .font(.title2.bold())
+                    .foregroundColor(.black.opacity(0.7))
+                SecureField(placeholder, text: text,onCommit: onCommit ?? {})
+                Divider()
+            }
         }
         .padding()
     }

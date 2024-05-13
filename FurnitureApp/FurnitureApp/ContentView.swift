@@ -45,6 +45,9 @@ struct ContentView: View {
                 developerView
                     .transition(.scale.animation(.snappy))
             }
+            if isShowProgrwssView {
+                ProgressView()
+            }
         }
     }
     @State private var isShowbuton = false
@@ -52,6 +55,7 @@ struct ContentView: View {
     @State private var signUpPresent = false
     @State private var isShowDetailView = false
     @State private var isShowDeveloperInfo = false
+    @State private var isShowProgrwssView = false
     private var buttonStack: some View {
         VStack(spacing: 5){
             Button {
@@ -80,7 +84,10 @@ struct ContentView: View {
                 Spacer()
                     .frame(height: 20)
                 Button(Constants.signButtonTitle) {
-                    signUpPresent = true
+                    isShowProgrwssView = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        signUpPresent = true
+                    }
                 }
                 .font(.title.bold())
                 .foregroundColor(.white)
